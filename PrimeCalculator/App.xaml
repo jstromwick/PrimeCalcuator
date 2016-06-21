@@ -1,9 +1,10 @@
-﻿<Application x:Class="PrimeCalculator.App"
+﻿<Application x:Class="PrimeCalculatorApp.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:PrimeCalculator"
+             xmlns:viewModels="clr-namespace:PrimeCalculatorApp.ViewModels"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <viewModels:CalculatorViewModel x:Key="CalculatorViewModel" />
     </Application.Resources>
 </Application>
+
