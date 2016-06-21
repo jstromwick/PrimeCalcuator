@@ -29,7 +29,6 @@ namespace PrimeCalculatorApp.ViewModels
 
         public bool CalculationInProgress { get; set; }
 
-
         private void StartCalculation()
         {
             if (CalculationInProgress)
