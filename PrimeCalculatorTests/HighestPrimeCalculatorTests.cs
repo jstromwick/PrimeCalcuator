@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using PrimeCalculator;
 
 namespace PrimeCalculatorTests
@@ -12,10 +13,26 @@ namespace PrimeCalculatorTests
         [TestCase(4, ExpectedResult = false)]
         [TestCase(16, ExpectedResult = false)]
         [TestCase(17, ExpectedResult = true)]
-        public bool IsPrime(long number)
+        [TestCase(8831, ExpectedResult = true)]
+        [TestCase(1301070, ExpectedResult = false)]
+        [TestCase(1301081, ExpectedResult = true)]
+        public bool CalculateIsPrime(long number)
         {
             var calculator = new HighestPrimeCalculator();
-            return calculator.IsPrime(number);
+            return calculator.CalculateIsPrime(number);
+        }
+
+        [Test,Explicit]
+        [TestCase(2)]
+        [TestCase(5)]
+        [TestCase(10)]
+        [TestCase(30)]
+        [TestCase(60)]
+        public void GetHighestPrime(int runTimeInSeconds)
+        {
+            var primeCalculator = new HighestPrimeCalculator();
+            var highestPrime = primeCalculator.CalculateHighestPrime(runTimeInSeconds);
+            Console.WriteLine("Highest Prime Calculated was: {0}",highestPrime);
         }
 
         [Test]
