@@ -41,7 +41,7 @@ namespace PrimeCalculator
 
 
         /// <summary>
-        ///     Useful for testing
+        ///     Only used for testing
         /// </summary>
         /// <param name="number"></param>
         /// <returns></returns>
@@ -56,7 +56,7 @@ namespace PrimeCalculator
             return primes.Last() == number;
         }
 
-        private bool IsPrime(long number, List<long> primes)
+        private static bool IsPrime(long number, List<long> primes)
         {
             if (number < 2)
             {

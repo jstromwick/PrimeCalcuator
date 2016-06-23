@@ -18,12 +18,12 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" TextWrapping="Wrap" Margin="5">Welcome to the Prime Calculator</TextBlock>
-        <Button Grid.Row="0" Grid.Column="1" Margin="5,0,0,0" Width="Auto" Height="Auto" HorizontalAlignment="Left" Click="Button_Click">Calculate Primes</Button>
+        <Button Grid.Row="0" Grid.Column="1" Margin="5,0,0,0" Width="Auto" Height="Auto" HorizontalAlignment="Left" Click="Button_Click" IsEnabled="{Binding CalculationInProgress, Converter={StaticResource InvertBoolConverter}}" >Calculate Primes</Button>
         <TextBlock Grid.Row="2" Grid.Column="0" Margin="5" Text="{Binding CalculationInfo.TimeElapsedInSeconds, StringFormat=Time Elapsed: {0:} Seconds}" Visibility="{Binding}" />
         <TextBlock Grid.Row="2" Grid.Column="1" Margin="5" Text="Calculation Complete" Visibility="{Binding CalculationComplete, Converter={StaticResource BoolToVisibilityConverter}, FallbackValue=Hidden}" />
         <!--Put in a progressbar!-->
         <StackPanel Grid.Row="3" Grid.Column="0" Margin="5">
-            <TextBlock Text="Primes Calculated So Far"></TextBlock>
+            <TextBlock Text="Highest Primes Calculated So Far"></TextBlock>
             <ScrollViewer VerticalScrollBarVisibility="Auto" Height="209">
                 <ItemsControl ItemsSource="{Binding CalculationInfo.LargestPrimes}">
                     <ItemsControl.ItemTemplate>
@@ -34,6 +34,6 @@
                 </ItemsControl>
             </ScrollViewer>
         </StackPanel>
-        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding CalculationInfo.LargestPrime, StringFormat=Highest Prime is {0:}}" Margin="5"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding CalculationInfo.LargestPrime, StringFormat=The Highest Prime is {0:}}" Margin="5"></TextBlock>
     </Grid>
 </Window>

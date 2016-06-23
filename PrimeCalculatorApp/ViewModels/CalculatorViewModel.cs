@@ -9,6 +9,7 @@ namespace PrimeCalculatorApp.ViewModels
         private const uint CalculationTime = 60;
         private bool _calculationComplete;
         private CalculationInfo _calculationInfo;
+        private bool _calculationInProgress;
 
         public CalculatorViewModel()
         {
@@ -35,7 +36,15 @@ namespace PrimeCalculatorApp.ViewModels
             }
         }
 
-        public bool CalculationInProgress { get; set; }
+        public bool CalculationInProgress
+        {
+            get { return _calculationInProgress; }
+            set
+            {
+                _calculationInProgress = value;
+                OnPropertyChanged();
+            }
+        }
 
         public async Task<long> StartCalculation()
         {
@@ -49,7 +58,7 @@ namespace PrimeCalculatorApp.ViewModels
             try
             {
                 CalculationInfo = new CalculationInfo();
-                var calculator = new DetailedHighestPrimeCalculator(CalculationInfo);
+                var calculator = new WpfHighestPrimeCalculator(CalculationInfo);
                 return await Task.Run(() => calculator.CalculateHighestPrime(CalculationTime));
             }
             finally

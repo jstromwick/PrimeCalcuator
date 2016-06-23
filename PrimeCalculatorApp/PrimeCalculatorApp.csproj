@@ -55,9 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\InvertBoolConverter.cs" />
     <Compile Include="Models\CalculationInfo.cs" />
     <Compile Include="Models\NotifyPropertyChangedBase.cs" />
-    <Compile Include="Calculators\DetailedHighestPrimeCalculator.cs" />
+    <Compile Include="Calculators\WpfHighestPrimeCalculator.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
