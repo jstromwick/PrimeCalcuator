@@ -1,33 +1,45 @@
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.Linq;
+
 namespace PrimeCalculatorApp.Models
 {
-    internal class CalculationInfo : NotifyPropertyChangedBase
+    public class CalculationInfo : NotifyPropertyChangedBase
     {
-        private long _largestPrime;
-        private int _timePassedInSeconds;
+        private ObservableCollection<long> _largestPrimes;
+        private uint _timeElapsedInSeconds;
 
-
-        public int TimePassedInSecondsPassedInSeconds
+        public CalculationInfo()
         {
-            get { return _timePassedInSeconds; }
+            LargestPrimes = new ObservableCollection<long>();
+            LargestPrimes.CollectionChanged += LargestPrimes_CollectionChanged;
+        }
+
+        public uint TimeElapsedInSeconds
+        {
+            get { return _timeElapsedInSeconds; }
             set
             {
-                _timePassedInSeconds = value;
+                _timeElapsedInSeconds = value;
                 OnPropertyChanged();
             }
         }
 
-        public long LargestPrime
+        public ObservableCollection<long> LargestPrimes
         {
-            get { return _largestPrime; }
-            set
+            get { return _largestPrimes; }
+            private set
             {
-                if (value == _largestPrime)
-                {
-                    return;
-                }
-                _largestPrime = value;
+                _largestPrimes = value;
                 OnPropertyChanged();
             }
+        }
+
+        public long LargestPrime => LargestPrimes.LastOrDefault();
+
+        private void LargestPrimes_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            OnPropertyChanged(nameof(LargestPrime));
         }
     }
 }

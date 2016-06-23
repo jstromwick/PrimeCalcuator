@@ -22,17 +22,17 @@ namespace PrimeCalculatorTests
             return calculator.CalculateIsPrime(number);
         }
 
-        [Test,Explicit]
-        [TestCase(2)]
-        [TestCase(5)]
-        [TestCase(10)]
-        [TestCase(30)]
-        [TestCase(60)]
-        public void GetHighestPrime(int runTimeInSeconds)
+        [Test, Explicit]
+        [TestCase(2u)]
+        [TestCase(5u)]
+        [TestCase(10u)]
+        [TestCase(30u)]
+        [TestCase(60u)]
+        public void GetHighestPrime(uint runTimeInSeconds)
         {
             var primeCalculator = new HighestPrimeCalculator();
             var highestPrime = primeCalculator.CalculateHighestPrime(runTimeInSeconds);
-            Console.WriteLine("Highest Prime Calculated was: {0}",highestPrime);
+            Console.WriteLine("Highest Prime Calculated was: {0}", highestPrime);
         }
 
         [Test]

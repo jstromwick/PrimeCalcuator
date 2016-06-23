@@ -6,14 +6,34 @@
         mc:Ignorable="d"
         DataContext="{StaticResource CalculatorViewModel}"
         Title="Prime Calculator" Height="350" Width="525">
-    <Grid>
-        <Grid.RowDefinitions>
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".5*"></ColumnDefinition>
+            <ColumnDefinition Width=".5*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0">Click the button below to start calculating</TextBlock>
-        <Button Grid.Row="1" Command="{Binding StartCalculationCommand}">Prime Time!</Button>
-        <TextBlock Grid.Row="2" Text="{Binding CalculationInfo.LargestPrime}"/>
+        <TextBlock Grid.Row="0" Grid.Column="0" TextWrapping="Wrap" Margin="5">Welcome to the Prime Calculator</TextBlock>
+        <Button Grid.Row="0" Grid.Column="1" Margin="5,0,0,0" Width="Auto" Height="Auto" HorizontalAlignment="Left" Click="Button_Click">Calculate Primes</Button>
+        <TextBlock Grid.Row="2" Grid.Column="0" Margin="5" Text="{Binding CalculationInfo.TimeElapsedInSeconds, StringFormat=Time Elapsed: {0:} Seconds}" Visibility="{Binding}" />
+        <TextBlock Grid.Row="2" Grid.Column="1" Margin="5" Text="Calculation Complete" Visibility="{Binding CalculationComplete, Converter={StaticResource BoolToVisibilityConverter}, FallbackValue=Hidden}" />
+        <!--Put in a progressbar!-->
+        <StackPanel Grid.Row="3" Grid.Column="0" Margin="5">
+            <TextBlock Text="Primes Calculated So Far"></TextBlock>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="209">
+                <ItemsControl ItemsSource="{Binding CalculationInfo.LargestPrimes}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" Margin="15,0,0,5" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </StackPanel>
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding CalculationInfo.LargestPrime, StringFormat=Highest Prime is {0:}}" Margin="5"></TextBlock>
     </Grid>
 </Window>

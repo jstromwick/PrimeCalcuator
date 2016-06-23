@@ -1,5 +1,6 @@
-﻿using System;
+﻿using System.Threading.Tasks;
 using System.Windows.Input;
+using PrimeCalculatorApp.Calculators;
 using PrimeCalculatorApp.Commands;
 using PrimeCalculatorApp.Models;
 
@@ -7,6 +8,8 @@ namespace PrimeCalculatorApp.ViewModels
 {
     internal class CalculatorViewModel : NotifyPropertyChangedBase
     {
+        private const uint CalculationTime = 10;
+        private bool _calculationComplete;
         private CalculationInfo _calculationInfo;
 
         public CalculatorViewModel()
@@ -25,21 +28,41 @@ namespace PrimeCalculatorApp.ViewModels
             }
         }
 
+        public bool CalculationComplete
+        {
+            get { return _calculationComplete; }
+            set
+            {
+                _calculationComplete = value;
+                OnPropertyChanged();
+            }
+        }
+
+
         public ICommand StartCalculationCommand { get; private set; }
 
         public bool CalculationInProgress { get; set; }
 
-        private void StartCalculation()
+        public async Task<long> StartCalculation()
         {
             if (CalculationInProgress)
             {
-                return;
+                return 0;
             }
 
             CalculationInProgress = true;
-            CalculationInfo = new CalculationInfo();
-
-            CalculationInfo.LargestPrime = new Random().Next();
+            CalculationComplete = false;
+            try
+            {
+                CalculationInfo = new CalculationInfo();
+                var calculator = new DetailedHighestPrimeCalculator(CalculationInfo);
+                return await Task.Run(() => calculator.CalculateHighestPrime(CalculationTime));
+            }
+            finally
+            {
+                CalculationInProgress = false;
+                CalculationComplete = true;
+            }
         }
     }
 }

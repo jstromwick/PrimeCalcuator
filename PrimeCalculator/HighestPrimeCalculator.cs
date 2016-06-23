@@ -7,7 +7,32 @@ namespace PrimeCalculator
 {
     public class HighestPrimeCalculator
     {
-        public long CalculateHighestPrime(int timelimitInSeconds)
+        /// <summary>
+        ///     Called everytime a new largest prime is found
+        /// </summary>
+        /// <param name="largestPrime">The largest prime found so far</param>
+        protected virtual void OnLargestPrimeFound(long largestPrime)
+        {
+        }
+
+        /// <summary>
+        ///     Called every thousand milliseconds during prime calculation
+        /// </summary>
+        /// <param name="millisecondsElapsed">The total number of milliseconds elapsed so far</param>
+        protected virtual void OnEveryThousandMilliseconds(long millisecondsElapsed)
+        {
+        }
+
+        /// <summary>
+        ///     Called after prime calculation is complete
+        /// </summary>
+        /// <param name="largestPrime">The largestPrime calculated by the calculator</param>
+        /// <param name="timelimitInSeconds"></param>
+        protected virtual void OnFinishedCalculation(long largestPrime, uint timelimitInSeconds)
+        {
+        }
+
+        public long CalculateHighestPrime(uint timelimitInSeconds)
         {
             long largestPrime = 0;
             long currentCanditate = 2;
@@ -17,18 +42,28 @@ namespace PrimeCalculator
 
             var primes = new List<long>();
             var limitInMillis = timelimitInSeconds*1000;
+            var thousandMillisThreshold = 1000;
             while (stopwatch.ElapsedMilliseconds < limitInMillis)
             {
                 if (IsPrime(currentCanditate, primes))
                 {
                     largestPrime = currentCanditate;
+                    OnLargestPrimeFound(largestPrime);
+                }
+
+                if (stopwatch.ElapsedMilliseconds > thousandMillisThreshold)
+                {
+                    thousandMillisThreshold += 1000;
+                    OnEveryThousandMilliseconds(stopwatch.ElapsedMilliseconds);
                 }
 
                 currentCanditate++;
             }
 
+            OnFinishedCalculation(largestPrime, timelimitInSeconds);
             return largestPrime;
         }
+
 
         /// <summary>
         ///     Useful for testing
@@ -37,7 +72,7 @@ namespace PrimeCalculator
         /// <returns></returns>
         internal bool CalculateIsPrime(long number)
         {
-           var primes = new List<long>();
+            var primes = new List<long>();
             for (var i = 2; i <= number; i++)
             {
                 IsPrime(i, primes);

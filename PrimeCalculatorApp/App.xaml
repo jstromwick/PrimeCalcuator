@@ -5,6 +5,7 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <viewModels:CalculatorViewModel x:Key="CalculatorViewModel" />
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"></BooleanToVisibilityConverter>
     </Application.Resources>
 </Application>
 

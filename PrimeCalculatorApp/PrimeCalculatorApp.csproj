@@ -58,6 +58,7 @@
     <Compile Include="Models\CalculationInfo.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Models\NotifyPropertyChangedBase.cs" />
+    <Compile Include="Calculators\DetailedHighestPrimeCalculator.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -91,6 +92,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -99,6 +101,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PrimeCalculator\PrimeCalculator.csproj">
+      <Project>{03F9D1F2-750D-4DC6-A760-D4A7FAEF5F69}</Project>
+      <Name>PrimeCalculator</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
