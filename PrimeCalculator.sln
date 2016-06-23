@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimeCalculator", "PrimeCal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimeCalculatorTests", "PrimeCalculatorTests\PrimeCalculatorTests.csproj", "{A99209D3-F247-4038-A2F4-D7217ACF25DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimeCalculatorConsole", "PrimeCalculatorConsole\PrimeCalculatorConsole.csproj", "{35B98331-0A75-4849-88F5-A1251D57948C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A99209D3-F247-4038-A2F4-D7217ACF25DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A99209D3-F247-4038-A2F4-D7217ACF25DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A99209D3-F247-4038-A2F4-D7217ACF25DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35B98331-0A75-4849-88F5-A1251D57948C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35B98331-0A75-4849-88F5-A1251D57948C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35B98331-0A75-4849-88F5-A1251D57948C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35B98331-0A75-4849-88F5-A1251D57948C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

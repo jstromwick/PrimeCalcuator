@@ -7,31 +7,6 @@ namespace PrimeCalculator
 {
     public class HighestPrimeCalculator
     {
-        /// <summary>
-        ///     Called everytime a new largest prime is found
-        /// </summary>
-        /// <param name="largestPrime">The largest prime found so far</param>
-        protected virtual void OnLargestPrimeFound(long largestPrime)
-        {
-        }
-
-        /// <summary>
-        ///     Called every thousand milliseconds during prime calculation
-        /// </summary>
-        /// <param name="millisecondsElapsed">The total number of milliseconds elapsed so far</param>
-        protected virtual void OnEveryThousandMilliseconds(long millisecondsElapsed)
-        {
-        }
-
-        /// <summary>
-        ///     Called after prime calculation is complete
-        /// </summary>
-        /// <param name="largestPrime">The largestPrime calculated by the calculator</param>
-        /// <param name="timelimitInSeconds"></param>
-        protected virtual void OnFinishedCalculation(long largestPrime, uint timelimitInSeconds)
-        {
-        }
-
         public long CalculateHighestPrime(uint timelimitInSeconds)
         {
             long largestPrime = 0;
@@ -113,6 +88,32 @@ namespace PrimeCalculator
 
             primes.Add(number);
             return true;
+        }
+
+
+        /// <summary>
+        ///     Called everytime a new largest prime is found
+        /// </summary>
+        /// <param name="largestPrime">The largest prime found so far</param>
+        protected virtual void OnLargestPrimeFound(long largestPrime)
+        {
+        }
+
+        /// <summary>
+        ///     Called every thousand milliseconds during prime calculation
+        /// </summary>
+        /// <param name="millisecondsElapsed">The total number of milliseconds elapsed so far</param>
+        protected virtual void OnEveryThousandMilliseconds(long millisecondsElapsed)
+        {
+        }
+
+        /// <summary>
+        ///     Called after prime calculation is complete
+        /// </summary>
+        /// <param name="largestPrime">The largestPrime calculated by the calculator</param>
+        /// <param name="timelimitInSeconds"></param>
+        protected virtual void OnFinishedCalculation(long largestPrime, uint timelimitInSeconds)
+        {
         }
     }
 }

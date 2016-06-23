@@ -56,7 +56,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\CalculationInfo.cs" />
-    <Compile Include="Commands\Command.cs" />
     <Compile Include="Models\NotifyPropertyChangedBase.cs" />
     <Compile Include="Calculators\DetailedHighestPrimeCalculator.cs" />
     <Page Include="MainWindow.xaml">

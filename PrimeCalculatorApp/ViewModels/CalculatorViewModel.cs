@@ -1,20 +1,17 @@
 ﻿using System.Threading.Tasks;
-using System.Windows.Input;
 using PrimeCalculatorApp.Calculators;
-using PrimeCalculatorApp.Commands;
 using PrimeCalculatorApp.Models;
 
 namespace PrimeCalculatorApp.ViewModels
 {
     internal class CalculatorViewModel : NotifyPropertyChangedBase
     {
-        private const uint CalculationTime = 10;
+        private const uint CalculationTime = 60;
         private bool _calculationComplete;
         private CalculationInfo _calculationInfo;
 
         public CalculatorViewModel()
         {
-            StartCalculationCommand = new Command(o => StartCalculation(), o => !CalculationInProgress);
             CalculationInfo = new CalculationInfo();
         }
 
@@ -37,9 +34,6 @@ namespace PrimeCalculatorApp.ViewModels
                 OnPropertyChanged();
             }
         }
-
-
-        public ICommand StartCalculationCommand { get; private set; }
 
         public bool CalculationInProgress { get; set; }
 
